@@ -1,0 +1,44 @@
+{% extends "main/base.html" %}
+{% block title %}Dodawanie posta{% endblock %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="sm-3">
+            <label for="title" class="form-label">Post title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="titleHelp" name="title">
+            {#            <div id="searchHelp" class="form-text">Enter post title.</div>#}
+
+            <label for="content" class="form-label">Post content</label>
+            <textarea class="form-control" id="content" aria-describedby="contentHelp" name="content"
+                      rows="3"></textarea>
+            {#            <div id="contentHelp" class="form-text">Enter post content.</div>#}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="on" id="published" name="published">
+                <label class="form-check-label" for="published">
+                    Is post published?
+                </label>
+            </div>
+            <label class="form-check-label" for="tags">
+                Tags:
+            </label>
+            <select class="form-select" multiple aria-label="Tags" id="tags" name="tags">
+                {% for tag in tags %}
+                    <option value="{{ tag.id }}">{{ tag.name }}</option>
+                {% endfor %}
+            </select>
+
+
+            <label class="form-check-label" for="author">
+                Select author:
+            </label>
+            <select class="form-select" aria-label="Author" id="author" name="author">
+                {% for author in authors %}
+                    <option value="{{ author.id }}">{{ author }}</option>
+                {% endfor %}
+            </select>
+
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+{% endblock %}

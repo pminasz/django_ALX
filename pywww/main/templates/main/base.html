@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC >
+<html>
+<head>
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static "main/img/samochod_obrazek.png" %}" width="25" height="30">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'main:hello_world' %}">Strona główna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:links' %}">Linki</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Kontakty
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'main:contacts' %}">Kontakt 1</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'main:contacts_2' %}">Kontakt 2</a></li>
+                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'posts:list' %}">Lista postów</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'posts:add' %}">Dodaj post</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:contact' %}">Kontakt</a>
+                </li>
+
+
+                <!--            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+                </li>
+
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-muted">&copy; 2022 ALX, Backend.django</p>
+
+    <a href="/"
+       class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <img src="{% static "main/img/samochod_obrazek.png" %}" alt="logo" width="50px">
+    </a>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+</html>
